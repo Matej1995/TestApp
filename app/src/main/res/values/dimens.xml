@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="global_spacing_16">16dp</dimen>
+	<dimen name="global_spacing_4">4dp</dimen>
+	<dimen name="global_spacing_8">8dp</dimen>
+	<dimen name="transaction_detail_image_height">120dp</dimen>
+	<dimen name="transaction_item_height">80dp</dimen>
+</resources>

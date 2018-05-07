@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:bind="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="entity"
+			type="cz.sandy.synetechtest.transactionlisting.TransactionEntity"/>
+
+		<variable
+			name="listener"
+			type="cz.sandy.synetechtest.transactionlisting.OnTransactionItemClickListener"/>
+
+	</data>
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/transaction_item_height"
+		android:background="@color/primary_background"
+		android:onClick="@{() -> listener.onTransactionClick(entity)}"
+		android:orientation="horizontal"
+		android:padding="@dimen/global_spacing_16">
+
+		<ImageView
+			android:id="@+id/transaction_type_image"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:adjustViewBounds="true"
+			android:scaleType="fitCenter"
+			android:tint="#FFF"
+			bind:setImageForType="@{entity.type}"
+			tools:src="@drawable/ic_home"/>
+
+		<TextView
+			android:id="@+id/transaction_description"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentTop="true"
+			android:layout_marginStart="@dimen/global_spacing_8"
+			android:layout_marginTop="@dimen/global_spacing_4"
+			android:layout_toEndOf="@+id/transaction_type_image"
+			android:ellipsize="end"
+			android:lines="1"
+			android:maxLines="1"
+			android:text="@{entity.description}"
+			android:textColor="#FFF"
+			tools:text="custom variable text"/>
+
+		<TextView
+			android:id="@+id/transaction_type"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignStart="@+id/transaction_description"
+			android:layout_below="@+id/transaction_description"
+			android:text="@{entity.type}"
+			android:textColor="#7B95A3"
+			tools:text="type"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_marginEnd="@dimen/global_spacing_16"
+			android:layout_toStartOf="@id/arrow_image"
+			android:text="@{entity.getPrettyAmount()}"
+			android:textColor="#FFF"
+			android:textSize="18sp"
+			tools:text="-50.00"/>
+
+		<ImageView
+			android:id="@+id/arrow_image"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentEnd="true"
+			android:layout_centerVertical="true"
+			android:src="@drawable/ic_arrow_right"/>
+
+	</RelativeLayout>
+
+</layout>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:bind="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<data>
+
+		<variable
+			name="view"
+			type="cz.sandy.synetechtest.transactiondetail.TransactionDetailView"/>
+
+		<variable
+			name="viewModel"
+			type="cz.sandy.synetechtest.transactiondetail.TransactionDetailViewModel"/>
+
+		<import type="cz.sandy.synetechtest.utility.TimeUtility"/>
+
+	</data>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/primary_background"
+		android:orientation="vertical">
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/transaction_detail_image_height"
+			android:scaleType="fitCenter"
+			android:tint="#FFF"
+			bind:setImageForType="@{viewModel.entity.type}"
+			tools:src="@drawable/ic_home"/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="@dimen/global_spacing_8"
+			android:background="#516B81"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/global_spacing_16"
+			android:layout_marginTop="@dimen/global_spacing_8"
+			android:text="@{viewModel.entity.description}"
+			android:textColor="#FFF"
+			android:textSize="18sp"
+			tools:text="Condoms"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/global_spacing_16"
+			android:text="@{viewModel.entity.type}"
+			android:textColor="#FFF"
+			tools:text="Kids"/>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="@dimen/global_spacing_8"
+			android:background="#516B81"/>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/global_spacing_16"
+			android:layout_marginStart="@dimen/global_spacing_16"
+			android:orientation="horizontal"
+			android:paddingBottom="@dimen/global_spacing_8"
+			android:paddingTop="@dimen/global_spacing_8">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/transaction_detail_amount"
+				android:textColor="#FFF"/>
+
+			<android.support.v4.widget.Space
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{viewModel.entity.getPrettyAmount()}"
+				android:textColor="#FFF"
+				tools:text="-453.80$"/>
+
+		</LinearLayout>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginEnd="@dimen/global_spacing_16"
+			android:layout_marginStart="@dimen/global_spacing_16"
+			android:background="#516B81"/>
+
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginEnd="@dimen/global_spacing_16"
+			android:layout_marginStart="@dimen/global_spacing_16"
+			android:orientation="horizontal"
+			android:paddingBottom="@dimen/global_spacing_8"
+			android:paddingTop="@dimen/global_spacing_8">
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/transaction_detail_date"
+				android:textColor="#FFF"/>
+
+			<android.support.v4.widget.Space
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+
+			<TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@{TimeUtility.getPrettyDate(viewModel.entity.date)}"
+				android:textColor="#FFF"
+				tools:text="18.5.2017"/>
+
+		</LinearLayout>
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:background="#516B81"/>
+
+	</LinearLayout>
+
+</layout>
